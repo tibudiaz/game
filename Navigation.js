@@ -1,16 +1,20 @@
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
 import CameraScreen from './screens/CameraScreen';
 import GalleryScreen from './screens/GalleryScreen';
 
-const AppNavigator = createStackNavigator(
-  {
-    Camera: CameraScreen,
-    Gallery: GalleryScreen,
-  },
-  {
-    initialRouteName: 'Camera',
-  }
-);
+const Tab = createBottomTabNavigator();
 
-export default createAppContainer(AppNavigator);
+const Navigation = () => {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Camera" component={CameraScreen} />
+        <Tab.Screen name="Gallery" component={GalleryScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+};
+
+export default Navigation;
